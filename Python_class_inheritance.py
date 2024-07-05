@@ -67,62 +67,137 @@
 # #note that deposit and withdraw would make changes to the account balance, 
 # but CheckBalance would just give the current account balance at the time of checking 
 
-class BankAccount:
-    def __init__(self, name, number, balance=0):
-        self.name= name
-        self.number= number
-        self.balance= balance
-    def deposit (self, amount):
-            self.balance += amount
-            print(f"your account has been credited with {self.balance}")
-    def withdrawl(self, amount):
-        if amount <= self.balance:
-            self.balance -= amount
-            print(f"debit of {amount} successful")
-    def checkbalance(self):
-        print(f"new account balance is {self.balance}")
-        return self.balance
-account1= BankAccount(name= "Tosin", number= "0225464321", balance= 5000)
-account1.deposit(amount=200)
-account1.withdrawl(amount=800)
-account1.checkbalance()
+# class BankAccount:
+#     def __init__(self, name, number, balance=0):
+#         self.name= name
+#         self.number= number
+#         self.balance= balance
+#     def deposit (self, amount):
+#             self.balance += amount
+#             print(f"your account has been credited with {self.balance}")
 
-account2= BankAccount(name= "Ajarah", number="023453723", balance= 7000)
-account2.deposit(amount=5000)
-account2.withdrawl(amount= 6000)
-account2.checkbalance()
+#     def withdrawal(self, amount):
+#           if self.balance < amount:
+#                 print("insufficient funds")
+#                 # return
+#           self.balance = self.balance- amount
+#           print(f"debit of {amount} successful, new balance is {self.balance}")
+    # def __repr__(self):
+    #      return repr(f"an object of class BankAccount, with name: {self.name}")
+#     def withdrawal(self, amount):
+#         if amount <= self.balance:
+#             self.balance -= amount
+#             print(f"debit of {amount} successful")
+#     def checkbalance(self):
+#         print(f"new account balance is {self.balance}")
+#         return self.balance
+# account1= BankAccount(name= "Tosin", number= "0225464321", balance= 5000)
+# # account1.deposit(amount=200)
+# account1.withdrawal(amount=800)
+# account1.checkbalance()
+
+# account2= BankAccount(name= "Ajarah", number="023453723", balance= 7000)
+# account2.deposit(amount=5000)
+# account2.withdraw(amount= 6000)
+# account2.checkbalance()
 
 #  Assignment 2
 # Create a Class named Person and create two other classes that would inherit from it which are student and lecturer. 
 # Note that name of class should be singular ensure to create atleast two instances for each class created
 
-class Person:  #parent class or base class
-     def __init__(self, name, age, height):
-          self.name= name
-          self.age= age
-          self.height = height
-     def describe(self):
-          print(f"my name is {self.name}, I am {self.age}years old, my current height is {self.height}")
+# class Person:  #parent class or base class
+#      def __init__(self, name, age, height):
+#           self.name= name
+#           self.age= age
+#           self.height = height
+#      def describe(self):
+#           print(f"my name is {self.name}, I am {self.age}years old, my current height is {self.height}")
 
-class Student(Person):
-         def classrep(self, department):
-            self.department= department
-            print(f"I am a {self.department} student, and my name is {self.name}. Also, I am {self.age}years old, and {self.height}m tall")
+# class Student(Person):
+#          def classrep(self, department):
+#             self.department= department
+#             print(f"I am a {self.department} student, and my name is {self.name}. Also, I am {self.age}years old, and {self.height}m tall")
               
-class Lecturer(Person):
-         def HOD(self, rank):
-            self.rank= rank
-            print(f"She is a {self.rank} and her name is {self.name}. She will be {self.age}years old next month")
+# class Lecturer(Person):
+#          def HOD(self, rank):
+#             self.rank= rank
+#             print(f"She is a {self.rank} and her name is {self.name}. She will be {self.age}years old next month")
 
-Human1=Person(name= "Mr Abiodun", age= 40, height=60)
-Human2= Student(name= "Ayo", age=20, height=34)
-Human3= Lecturer(name="Mrs Ogunsola", age= 32, height= 50)
-Human1.describe()
-Human2.classrep(department="Biochemistry")
-Human3.HOD(rank="Professor")
+# Human1=Person(name= "Mr Abiodun", age= 40, height=60)
+# Human2= Student(name= "Ayo", age=20, height=34)
+# Human3= Lecturer(name="Mrs Ogunsola", age= 32, height= 50)
+# Human1.describe()
+# Human2.classrep(department="Biochemistry")
+# Human3.HOD(rank="Professor")
 
-                     
-                     
+# class Animal:
+#     def __init__(self, name, condition):
+#         self.name= name
+#         self.condition= condition
+#         self.alive = True
+#     def eat(self):
+#         return f"the {self.name} is eating because she is {self.condition}" 
+#     def sleep(self):
+#         return f"the {self.name} is sleeping"
+#     def swim(self):
+#         return f"the {self.name} is swimming because {self.condition} keeps it cool"
+
+# class Dog(Animal):
+#     pass
+# # class Sloth(Animal):
+# #     pass
+# class Fish(Dog):
+#     pass
+
+# dog= Dog(name= "scooby", condition= "pregnant")
+# # sloth= Sloth(name= "angie")
+# sloth1=Sloth(name="PEN")
+# fish = Fish(name= "fin", condition= "water")
+# print(dog.eat())
+# # print(dog.sleep())
+# # print(sloth.alive)
+# print(fish.swim())
+
+
+
+#example 2
+class Shape:
+    def __init__(self, colour, is_filled):
+        self.colour= colour
+        self.is_filled= is_filled
+    def describe(self):
+        print (f"the ball is colour {self.colour}")
+
+class Circle(Shape):
+    def __init__(self, radius, colour, is_filled ):
+        super().__init__(colour, is_filled)
+        self.radius= radius
+    
+    def describe(self):
+        print(f"it has an area of {3.142* self.radius *self.radius}cm^2")
+        super().describe()
+
+
+
+# class Triangle(Shape):
+#     def __init__(self, colour, is_filled, width, height):
+#         super().__init__(colour, is_filled)
+#         self.width= width
+#         self.height= height
+        
+
+# class Square(Shape): 
+#     def __init__(self, colour, is_filled, width):
+#         super.__init__(colour, is_filled)
+#         self.width= width       
+circle= Circle(radius= 5, colour= "red", is_filled= True)
+circle.describe()
+# triangle= Triangle(colour="blue", is_filled= False, width=4, height=10)  
+# print(circle.colour)      
+
+
+
+        
                      
                      
                      
